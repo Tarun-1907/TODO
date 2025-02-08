@@ -1,4 +1,3 @@
-/* styles.css */
 :root {
     --background-light: #f4f4f4;
     --background-dark: #1e1e1e;
@@ -13,7 +12,6 @@
     --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* ✅ Navbar Styling */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -30,14 +28,12 @@
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* ✅ Logo Styling */
 .logo {
     font-size: 22px;
     font-weight: bold;
     color:#17a2b8;
 }
 
-/* ✅ Logout Button */
 .logout-btn {
     background: red;
     color: white;
@@ -53,13 +49,11 @@
     margin-right: 5px;
 }
 
-/* ✅ Hover Effect */
 .logout-btn:hover {
     background: darkred;
     transform: scale(1.05);
 }
 
-/* ✅ Responsive Navbar */
 @media (max-width: 768px) {
     .navbar {
         font-size: 18px;
