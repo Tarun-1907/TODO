@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - To-Do List</title>
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <h2>🚀 Welcome Back!</h2>
+        <p>Login to manage your tasks efficiently.</p>
+
+        <form id="loginForm">
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="loginEmail" placeholder="Email" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="loginPassword" placeholder="Password" required>
+            </div>
+
+            <button type="submit" class="auth-btn">Login</button>
+        </form>
+
+        <p>Don't have an account? <a href="index.html">Register</a></p>
+        <p id="loginError" class="error-message"></p>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html>

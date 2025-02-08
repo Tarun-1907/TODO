@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced To-Do List App</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <link rel="stylesheet" href="auth.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+<!-- ✅ Navigation Bar -->
+<nav class="navbar">
+    <h1 class="logo">🚀 Task Manager</h1>
+    <button onclick="logout()" class="logout-btn">
+        <i class="fas fa-sign-out-alt"></i> Logout
+    </button>
+</nav>
+
+    <div class="container">
+        <div class="header">
+            <h1>Advanced To-Do List</h1>
+            <button id="darkModeToggle"><i class="fas fa-moon"></i></button>
+        </div>
+        <div class="input-container">
+            <input type="text" id="taskInput" placeholder="Add a new task...">
+            <input type="date" id="taskDueDate">
+            <input type="time" id="taskTime">
+            <select id="taskCategory">
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="shopping">Shopping</option>
+                <option value="other">Other</option>
+                <option value="health">Health & Fitness</option>
+                <option value="finance">Finance</option>
+                <option value="family">Family & Friends</option>
+                <option value="education">Education</option>
+                <option value="travel">Travel</option>
+                <option value="home">Home & Maintenance</option>
+                <option value="creative">Creative Projects</option>
+                <option value="events">Events & Celebrations</option>
+                <option value="volunteering">Volunteering</option>
+                <option value="technology">Technology</option>
+                <option value="hobbies">Hobbies</option>
+                <option value="errands">Errands</option>
+                <option value="goals">Long-Term Goals</option>
+            </select>
+            <select id="taskPriority">
+                <option value="low">Low Priority</option>
+                <option value="medium">Medium Priority</option>
+                <option value="high">High Priority</option>
+            </select>
+            <button id="addTaskBtn"><i class="fas fa-plus"></i></button>
+        </div>
+        <div class="filter-container">
+            <label for="filterCategory">Filter by Category:</label>
+            <select id="filterCategory">
+                <option value="all">All</option>
+                <option value="work">Work</option>
+                <option value="personal">Personal</option>
+                <option value="shopping">Shopping</option>
+                <option value="other">Other</option>
+                <option value="health">Health & Fitness</option>
+                <option value="finance">Finance</option>
+                <option value="family">Family & Friends</option>
+                <option value="education">Education</option>
+                <option value="travel">Travel</option>
+                <option value="home">Home & Maintenance</option>
+                <option value="creative">Creative Projects</option>
+                <option value="events">Events & Celebrations</option>
+                <option value="volunteering">Volunteering</option>
+                <option value="technology">Technology</option>
+                <option value="hobbies">Hobbies</option>
+                <option value="errands">Errands</option>
+                <option value="goals">Long-Term Goals</option>
+            </select>
+            <label for="filterPriority">Filter by Priority:</label>
+            <select id="filterPriority">
+                <option value="all">All</option>
+                <option value="low">Low</option>
+                <option value="medium">Medium</option>
+                <option value="high">High</option>
+            </select>
+        </div>
+        <ul id="taskList"></ul>
+    </div>
+    <!-- <audio src="notification.mp3" id="notificationSound"></audio> -->
+    <script src="scripts.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

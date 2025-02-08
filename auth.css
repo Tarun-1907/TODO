@@ -1,0 +1,125 @@
+/* ✅ General Styling */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* ✅ Authentication Container */
+.auth-container {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* ✅ Headings */
+h2 {
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* ✅ Input Fields */
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #f4f4f4;
+    padding: 10px;
+    border-radius: 8px;
+    margin: 10px 0;
+    border: 2px solid transparent;
+    transition: border 0.3s;
+}
+
+.input-group i {
+    margin-right: 10px;
+    color: #6a11cb;
+    font-size: 18px;
+}
+
+.input-group input {
+    width: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 16px;
+}
+
+.input-group:focus-within {
+    border: 2px solid #6a11cb;
+}
+
+/* ✅ Buttons */
+.auth-btn {
+    width: 100%;
+    padding: 12px;
+    background: #6a11cb;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+}
+
+.auth-btn:hover {
+    background: #2575fc;
+}
+
+/* ✅ Links */
+p {
+    margin-top: 10px;
+}
+
+a {
+    color: #6a11cb;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* ✅ Error Message */
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* ✅ Fade-In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ✅ Mobile Responsiveness */
+@media (max-width: 400px) {
+    .auth-container {
+        width: 90%;
+        padding: 20px;
+    }
+
+    .input-group {
+        flex-direction: column;
+        padding: 8px;
+    }
+
+    .input-group i {
+        margin-bottom: 5px;
+    }
+}

@@ -1,0 +1,314 @@
+/* styles.css */
+:root {
+    --background-light: #f4f4f4;
+    --background-dark: #1e1e1e;
+    --text-light: #333;
+    --text-dark: #f4f4f4;
+    --container-light: #fff;
+    --container-dark: #2c2c2c;
+    --primary-color: #6a11cb;
+    --secondary-color: #2575fc;
+    --border-light: #ddd;
+    --border-dark: #444;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Navbar Styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #1a1a2e;
+    color: white;
+    padding: 15px 20px;
+    font-size: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 97.5%;
+    z-index: 1000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ✅ Logo Styling */
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color:#17a2b8;
+}
+
+/* ✅ Logout Button */
+.logout-btn {
+    background: red;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.logout-btn i {
+    margin-right: 5px;
+}
+
+/* ✅ Hover Effect */
+.logout-btn:hover {
+    background: darkred;
+    transform: scale(1.05);
+}
+
+/* ✅ Responsive Navbar */
+@media (max-width: 768px) {
+    .navbar {
+        font-size: 18px;
+        padding: 12px 15px;
+    }
+
+    .logout-btn {
+        font-size: 14px;
+        padding: 7px 12px;
+    }
+}
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    color: var(--text-light);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.dark-mode {
+    background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+    color: var(--text-dark);
+}
+
+.container {
+    background: var(--container-light);
+    padding: 25px; /* Reduced padding for better spacing */
+    border-radius: 15px; /* Reduced border radius for a cleaner look */
+    box-shadow: var(--shadow);
+    width: 90%; /* Made width responsive */
+    max-width: 1000px; /* Set a maximum width */
+    text-align: center;
+    transition: background 0.3s ease;
+    margin: 20px auto; /* Added margin for better spacing */
+    overflow-y: auto; /* Enable vertical scrolling */
+    max-height: 90vh; /* Limit container height to 90% of viewport height */
+}
+
+
+body.dark-mode .container {
+    background: var(--container-dark);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    color: var(--text-light);
+}
+
+body.dark-mode h1 {
+    color: var(--text-dark);
+}
+
+#darkModeToggle {
+    background: none;
+    border: none;
+    color: var(--text-light);
+    cursor: pointer;
+    font-size: 20px;
+    transition: color 0.3s ease;
+}
+
+body.dark-mode #darkModeToggle {
+    color: var(--text-dark);
+}
+
+#darkModeToggle:hover {
+    color: var(--primary-color);
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="date"], input[type="time"], select {
+    padding: 10px;
+    border: 2px solid var(--border-light);
+    border-radius: 8px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease, background 0.3s ease, color 0.3s ease;
+    width: 100%;
+}
+
+body.dark-mode input[type="text"], body.dark-mode input[type="date"], body.dark-mode input[type="time"], body.dark-mode select {
+    border-color: var(--border-dark);
+    background: #444;
+    color: var(--text-dark);
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}
+
+.filter-container {
+    margin-bottom: 20px;
+    text-align: left;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.filter-container label {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    background: var(--container-light);
+    padding: 10px;
+    margin-bottom: 4px;
+    border-radius: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.5s ease;
+    cursor: grab;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: var(--shadow);
+}
+
+body.dark-mode li {
+    background: #444;
+}
+
+li.completed {
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+li .task-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+li .task-content input[type="checkbox"] {
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+}
+
+li .task-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+}
+
+li .task-details .task-time {
+    font-size: 12px;
+    color: #666;
+}
+
+li .task-details .task-category {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.task-category.work { color: #2575fc; }
+.task-category.personal { color: #28a745; }
+.task-category.shopping { color: #ffc107; }
+.task-category.other { color: #dc3545; }
+.task-category.health { color: #e83e8c; }
+.task-category.finance { color: #17a2b8; }
+.task-category.family { color: #6f42c1; }
+.task-category.education { color: #20c997; }
+.task-category.travel { color: #fd7e14; }
+.task-category.home { color: #6c757d; }
+.task-category.creative { color: #ff6b6b; }
+.task-category.events { color: #f783ac; }
+.task-category.volunteering { color: #4caf50; }
+.task-category.technology { color: #007bff; }
+.task-category.hobbies { color: #ff9f43; }
+.task-category.errands { color: #adb5bd; }
+.task-category.goals { color: #6610f2; }
+
+li .task-priority {
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+li .task-priority.low {
+    color: #28a745;
+}
+
+li .task-priority.medium {
+    color: #ffc107;
+}
+
+li .task-priority.high {
+    color: #dc3545;
+}
+
+li button {
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    cursor: pointer;
+    font-size: 16px;
+    transition: color 0.3s ease;
+}
+
+li button:hover {
+    color: #e60000;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
