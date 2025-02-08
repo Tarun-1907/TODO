@@ -36,13 +36,12 @@ function addTask() {
 
     if (taskText !== '') {
         createTask(taskText, dueDate, time, category, priority);
-        saveTasks();
-
         taskInput.value = '';
         taskDueDate.value = '';
         taskTime.value = '';
         taskCategory.value = 'work';
         taskPriority.value = 'low';
+        saveTasks();
     }
 }
 
@@ -75,7 +74,7 @@ function createTask(taskText, dueDate, time, category, priority) {
 
     const taskTimeSpan = document.createElement('span');
     taskTimeSpan.className = 'task-time';
-    taskTimeSpan.textContent = time ? `Time: ${time}` : ''; 
+    taskTimeSpan.textContent = time ? `Time: ${time}` : '';
 
     const taskCategorySpan = document.createElement('span');
     taskCategorySpan.className = `task-category ${category}`;
@@ -104,6 +103,27 @@ function createTask(taskText, dueDate, time, category, priority) {
     li.appendChild(taskContent);
     li.appendChild(deleteBtn);
     taskList.appendChild(li);
+
+    // Add drag-and-drop functionality
+    li.addEventListener('dragstart', handleDragStart);
+    li.addEventListener('dragover', handleDragOver);
+    li.addEventListener('drop', handleDrop);
+}
+
+function filterTasks() {
+    const filterCategory = document.getElementById('filterCategory').value;
+    const filterPriority = document.getElementById('filterPriority').value;
+    const tasks = document.querySelectorAll('#taskList li');
+
+    tasks.forEach(task => {
+        const categoryMatch = filterCategory === 'all' || task.classList.contains(filterCategory);
+        const priorityMatch = filterPriority === 'all' || task.classList.contains(filterPriority);
+        if (categoryMatch && priorityMatch) {
+            task.style.display = 'flex';
+        } else {
+            task.style.display = 'none';
+        }
+    });
 }
 
 function saveTasks() {
@@ -111,8 +131,8 @@ function saveTasks() {
     document.querySelectorAll('#taskList li').forEach(task => {
         tasks.push({
             text: task.querySelector('.task-details span').textContent,
-            dueDate: task.querySelectorAll('.task-time')[0].textContent.replace('Due: ', ''), 
-            time: task.querySelectorAll('.task-time')[1].textContent.replace('Time: ', ''), 
+            dueDate: task.querySelector('.task-time').textContent[0].replace('Due: ', ''),
+            time: task.querySelector('.task-time').textContent[1].replace('Time: ', ''),
             category: task.classList[1],
             priority: task.classList[0],
             completed: task.classList.contains('completed')
@@ -123,8 +143,6 @@ function saveTasks() {
 
 function loadTasks() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    document.getElementById('taskList').innerHTML = ""; 
-
     tasks.forEach(task => {
         createTask(task.text, task.dueDate, task.time, task.category, task.priority);
         const li = document.querySelector('#taskList li:last-child');
@@ -147,6 +165,7 @@ function loadSettings() {
     }
 }
 
+// Drag-and-drop functionality
 let draggedItem = null;
 
 function handleDragStart(e) {
@@ -183,6 +202,7 @@ function getDragAfterElement(container, y) {
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
+// Load tasks and settings when the page loads
 window.addEventListener('load', () => {
     loadTasks();
     loadSettings();
