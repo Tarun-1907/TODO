@@ -1,4 +1,3 @@
-// 🚀 Register User
 document.getElementById("registerForm")?.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -16,7 +15,6 @@ document.getElementById("registerForm")?.addEventListener("submit", function (e)
     window.location.href = "login.html";
 });
 
-// 🚀 Login User
 document.getElementById("loginForm")?.addEventListener("submit", function (e) {
     e.preventDefault();
 
@@ -40,21 +38,18 @@ document.getElementById("loginForm")?.addEventListener("submit", function (e) {
     window.location.href = "Home.html"; // Redirect to main app
 });
 
-// 🚀 Check if User is Logged In
 function checkAuth() {
     if (!sessionStorage.getItem("loggedInUser")) {
         window.location.href = "login.html";
     }
 }
 
-// ✅ Logout Function (Fix)
 function logout() {
     sessionStorage.removeItem("loggedInUser"); // Remove session data
     alert("🚪 Logged out successfully! Redirecting to login...");
     window.location.href = "login.html"; // Redirect to login page
 }
 
-// ✅ Ensure User is Logged In
 function checkAuth() {
     if (!sessionStorage.getItem("loggedInUser")) {
         alert("⚠ You must be logged in to access this page!");
@@ -62,7 +57,6 @@ function checkAuth() {
     }
 }
 
-// ✅ Run `checkAuth()` on protected pages like `index.html`
 window.onload = function () {
     if (window.location.pathname.includes("Home.html")) {
         checkAuth();
