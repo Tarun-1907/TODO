@@ -1,4 +1,3 @@
-// script.js
 document.getElementById('addTaskBtn').addEventListener('click', function () {
     addTask();
 });
@@ -37,12 +36,13 @@ function addTask() {
 
     if (taskText !== '') {
         createTask(taskText, dueDate, time, category, priority);
+        saveTasks();
+
         taskInput.value = '';
         taskDueDate.value = '';
         taskTime.value = '';
         taskCategory.value = 'work';
         taskPriority.value = 'low';
-        saveTasks();
     }
 }
 
@@ -75,7 +75,7 @@ function createTask(taskText, dueDate, time, category, priority) {
 
     const taskTimeSpan = document.createElement('span');
     taskTimeSpan.className = 'task-time';
-    taskTimeSpan.textContent = time ? `Time: ${time}` : '';
+    taskTimeSpan.textContent = time ? `Time: ${time}` : ''; 
 
     const taskCategorySpan = document.createElement('span');
     taskCategorySpan.className = `task-category ${category}`;
@@ -104,27 +104,6 @@ function createTask(taskText, dueDate, time, category, priority) {
     li.appendChild(taskContent);
     li.appendChild(deleteBtn);
     taskList.appendChild(li);
-
-    // Add drag-and-drop functionality
-    li.addEventListener('dragstart', handleDragStart);
-    li.addEventListener('dragover', handleDragOver);
-    li.addEventListener('drop', handleDrop);
-}
-
-function filterTasks() {
-    const filterCategory = document.getElementById('filterCategory').value;
-    const filterPriority = document.getElementById('filterPriority').value;
-    const tasks = document.querySelectorAll('#taskList li');
-
-    tasks.forEach(task => {
-        const categoryMatch = filterCategory === 'all' || task.classList.contains(filterCategory);
-        const priorityMatch = filterPriority === 'all' || task.classList.contains(filterPriority);
-        if (categoryMatch && priorityMatch) {
-            task.style.display = 'flex';
-        } else {
-            task.style.display = 'none';
-        }
-    });
 }
 
 function saveTasks() {
@@ -132,8 +111,8 @@ function saveTasks() {
     document.querySelectorAll('#taskList li').forEach(task => {
         tasks.push({
             text: task.querySelector('.task-details span').textContent,
-            dueDate: task.querySelector('.task-time').textContent.replace('Due: ', ''),
-            time: task.querySelector('.task-time').textContent.replace('Time: ', ''),
+            dueDate: task.querySelectorAll('.task-time')[0].textContent.replace('Due: ', ''), 
+            time: task.querySelectorAll('.task-time')[1].textContent.replace('Time: ', ''), 
             category: task.classList[1],
             priority: task.classList[0],
             completed: task.classList.contains('completed')
@@ -144,6 +123,8 @@ function saveTasks() {
 
 function loadTasks() {
     const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+    document.getElementById('taskList').innerHTML = ""; 
+
     tasks.forEach(task => {
         createTask(task.text, task.dueDate, task.time, task.category, task.priority);
         const li = document.querySelector('#taskList li:last-child');
@@ -166,7 +147,6 @@ function loadSettings() {
     }
 }
 
-// Drag-and-drop functionality
 let draggedItem = null;
 
 function handleDragStart(e) {
@@ -203,73 +183,7 @@ function getDragAfterElement(container, y) {
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
-// Load tasks and settings when the page loads
 window.addEventListener('load', () => {
     loadTasks();
     loadSettings();
 });
-
-// Notification
-
-// if("Notification" in window){
-//     Notification.requestPermission().then(function(permission){
-//         if(Notification.permission!=="granted"){
-//             alert("Please allow");
-//             location.reload();
-//         }
-//     });
-// }
-
-// var timeoutIds=[];
-// function scheduleReminder(){
-//     var taskInput=document.getElementById("taskInput").value;
-//     var taskDueDate=document.getElementById("taskDueDate").value;
-//     var taskTime=document.getElementById("taskTime").value;
-//     var taskCategory=document.getElementById("taskCategory").value;
-//     var taskPriority=document.getElementById("taskPriority").value;
-
-//     var dateTimeString=taskDueDate+" "+ taskTime;
-//     var scheduledTime=new Date(dateTimeString);
-//     var currentTime=new Date();
-//     var timeDifference=scheduledTime-currentTime;
-
-//     if(timeDifference>0){
-//         addReminder(taskInput,taskCategory,dateTimeString);
-
-//         var timeoutId =setTimeout(function(){
-//             document.getElementById("NotificationSound").play();
-
-//             var notification=new Notification(taskInput,{
-//                 body: taskCategory,
-//                 requireInteraction:true,
-//             });
-//         },timeDifference);
-
-//         timeoutIds.push(timeoutId);
-//     }
-//     else{
-//         alert("Past");
-//     }
-// }
-
-// function addReminder(taskInput,taskCategory,dateTimeString){
-//     var tableBody=document.getElementById("reminderTableBody");
-//     var row=tableBody.insertRow();
-//     var taskInputCell=row.insertCell(0);
-//     var taskCategoryCell=row.insertCell(1);
-//     var dateTimeStringCell=row.insertCell(2);
-//     var actionCell=row.insertCell(3);
-
-//     taskInputCell.innerHTML=taskInput;
-//     taskCategoryCell.innerHTML=taskCategory;
-//     dateTimeStringCell.innerHTML=dateTimeString;
-//     actionCell.innerHTML='<button> onclick="deleteReminder(this);">Delete</button>';
-// }
-
-// function deleteReminder(button){
-//     var row=button.closest("tr");
-//     var index=row.rowIndex;
-//     clearTimeout(timeoutIds[index-1]);
-//     timeoutIds.splice(index-1,1);
-//     row.remove();
-// }
