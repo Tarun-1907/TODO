@@ -1,4 +1,3 @@
-/* ✅ General Styling */
 body {
     font-family: 'Segoe UI', sans-serif;
     background: linear-gradient(135deg, #6a11cb, #2575fc);
@@ -9,7 +8,6 @@ body {
     margin: 0;
 }
 
-/* ✅ Authentication Container */
 .auth-container {
     background: white;
     padding: 30px;
@@ -20,13 +18,11 @@ body {
     animation: fadeIn 0.5s ease-in-out;
 }
 
-/* ✅ Headings */
 h2 {
     margin-bottom: 10px;
     color: #333;
 }
 
-/* ✅ Input Fields */
 .input-group {
     display: flex;
     align-items: center;
@@ -56,7 +52,6 @@ h2 {
     border: 2px solid #6a11cb;
 }
 
-/* ✅ Buttons */
 .auth-btn {
     width: 100%;
     padding: 12px;
@@ -73,7 +68,6 @@ h2 {
     background: #2575fc;
 }
 
-/* ✅ Links */
 p {
     margin-top: 10px;
 }
@@ -88,14 +82,12 @@ a:hover {
     text-decoration: underline;
 }
 
-/* ✅ Error Message */
 .error-message {
     color: red;
     font-size: 14px;
     margin-top: 10px;
 }
 
-/* ✅ Fade-In Animation */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -107,7 +99,6 @@ a:hover {
     }
 }
 
-/* ✅ Mobile Responsiveness */
 @media (max-width: 400px) {
     .auth-container {
         width: 90%;
